@@ -6,24 +6,19 @@
 
 int main()
 {
-    srand(time(NULL));
-    char *name = "Ethan";
-    char *new_name = "Jackson";
-    int id = rand();
+    struct client *c;
+    char *name_p = "Ethan";
+    unsigned int id = 1000;
 
-    struct client *new_c = new_client(id, name);
+    c = new_client(id, name_p);
 
-    struct client new_client;
+    print_struct(c);
 
-    new_client.name = name;
-    new_client.id = id;
+    id = 2000;
+    change_id(c, id);
 
-    struct client *new_c_p = &new_client;
+    print_struct(c);
 
-    change_id(new_c_p, rand());
-    change_name(new_c_p, new_name);
-    print_struct(new_c_p);
-
-    //free(new_c_p);
+    free(c);
     return 0;
 }
